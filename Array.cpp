@@ -2,19 +2,7 @@
 
 class Array
 {
-public:
-	Array() :
-	{
 
-	}
-
-	~Array()
-	{
-
-	}
-
-private:
-	int* arr;
 };
 
 int main()
