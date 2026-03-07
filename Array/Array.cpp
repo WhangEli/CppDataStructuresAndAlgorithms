@@ -15,8 +15,7 @@ void Array::printArray()
 {
 	for (int i = 0; i < mSize; i++)
 	{
-		std::cout << *mpArr << " ";
-		mpArr++;
+		std::cout << mpArr[i] << " ";
 	}
 
 	std::cout << std::endl;
@@ -99,13 +98,11 @@ void Array::updateVal(int val, int newVal)
 	}
 }
 
-void Array::expand(int newCap)
+void Array::expand(int cap)
 {
-	int* p = new int[newCap];
-	memcpy(p, mpArr, sizeof(*mpArr));
+	int* p = new int[cap];
+	memcpy(p, mpArr, sizeof(int) * mCapacity);
 	delete[]mpArr;
 	mpArr = p;
-	mCapacity = newCap;
-	delete[]p;
-	p = nullptr;
+	mCapacity = cap;
 }
