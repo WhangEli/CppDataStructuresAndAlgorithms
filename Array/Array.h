@@ -1,20 +1,23 @@
 ﻿#pragma once
+#include <iostream>
+
 class Array
 {
 public:
-	Array(int cap) :mCapacity(cap), mSize(0)
-	{
-		mpArr = new int[cap]();
-	}
+	Array(int cap);
 
-	~Array()
-	{
-		delete[] mpArr;
-		mpArr = nullptr;
-	}
-
+	~Array();
 public:
-	
+	void printArray();
+	void push_back(int val);
+	void insert(int num, int val);
+	void pop_back();
+	void remove(int num);
+	int findVal(int val);
+	void updateVal(int val, int newVal);
+
+private:
+	void expand(int newCap);
 
 private:
 	int* mpArr;
