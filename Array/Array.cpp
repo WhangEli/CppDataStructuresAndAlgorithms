@@ -86,6 +86,7 @@ int Array::findVal(int val)
 		}
 	}
 
+	std::cout << "can not find the element" << val << std::endl;
 	return -1;
 }
 

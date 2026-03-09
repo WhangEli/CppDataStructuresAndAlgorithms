@@ -24,4 +24,3 @@ private:
 	int mCapacity;
 	int mSize;
 };
-
