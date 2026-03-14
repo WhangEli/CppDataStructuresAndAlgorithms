@@ -45,22 +45,25 @@ int main()
 	srand(time(0));
 	for (int i = 0; i < 10; i++)
 	{
-		linkList.insertTail(rand() % 100);
+		linkList.InsertTail(rand() % 100);
 	}
-	linkList.printLinkList();
+	linkList.PrintLinkList();
 
-	linkList.removeNode(1000);
-	linkList.printLinkList();
+	linkList.RemoveNode(1000);
+	linkList.PrintLinkList();
 
-	linkList.insertHead(888);
-	linkList.insertHead(666);
-	linkList.printLinkList();
+	linkList.InsertHead(888);
+	linkList.InsertHead(666);
+	linkList.PrintLinkList();
 
-	linkList.removeNode(888);
-	linkList.printLinkList();
+	linkList.RemoveNode(888);
+	linkList.PrintLinkList();
 
-	linkList.updateVal(666, 999);
-	linkList.printLinkList();
+	linkList.UpdateVal(666, 999);
+	linkList.PrintLinkList();
+
+	linkList.SortedLinkList(11);
+	linkList.PrintLinkList();
 
 	return 0;
 }

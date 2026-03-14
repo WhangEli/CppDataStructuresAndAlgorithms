@@ -14,12 +14,16 @@ public:
 	~LinkList();
 
 public:
-	void printLinkList();
-	void insertTail(int val);
-	void insertHead(int val);
-	void removeNode(int val);
-	void updateVal(int val, int newVal);
+	void PrintLinkList();
+	void InsertTail(int val);
+	void InsertHead(int val);
+	void RemoveNode(int val);
+	void UpdateVal(int val, int newVal);
+	void SortedLinkList(int num);
 
 private:
 	Node* mHead;
+
+public:
+	friend void MergeSortedLinkList(LinkList l1, LinkList l2);
 };

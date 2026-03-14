@@ -13,7 +13,7 @@ LinkList::~LinkList()
 	mHead = nullptr;
 }
 
-void LinkList::printLinkList()
+void LinkList::PrintLinkList()
 {
 	Node* p = nullptr;
 	p = mHead->mNext;
@@ -27,7 +27,7 @@ void LinkList::printLinkList()
 	std::cout << std::endl;
 }
 
-void LinkList::insertTail(int val)
+void LinkList::InsertTail(int val)
 {
 	Node* p = mHead;
 
@@ -42,7 +42,7 @@ void LinkList::insertTail(int val)
 	p->mNext = nullptr;
 }
 
-void LinkList::insertHead(int val)
+void LinkList::InsertHead(int val)
 {
 	Node* node = new Node;
 	Node* p = mHead->mNext;
@@ -52,7 +52,7 @@ void LinkList::insertHead(int val)
 	mHead->mNext = node;
 }
 
-void LinkList::removeNode(int val)
+void LinkList::RemoveNode(int val)
 {
 	Node* p = mHead->mNext;
 	Node* q = mHead;
@@ -72,7 +72,7 @@ void LinkList::removeNode(int val)
 	std::cout << "no such val in the LinkList" << std::endl;
 }
 
-void LinkList::updateVal(int val, int newVal)
+void LinkList::UpdateVal(int val, int newVal)
 {
 	Node* p = mHead->mNext;
 
@@ -88,4 +88,52 @@ void LinkList::updateVal(int val, int newVal)
 	}
 
 	std::cout << "no such val in the LinkList" << std::endl;
+}
+
+void LinkList::SortedLinkList(int num)
+{
+	Node* p = mHead->mNext->mNext;
+	Node* q = mHead->mNext;
+
+	for (int i = 0; i < num - 2; i++)
+	{
+		Node* p = mHead->mNext->mNext;
+		Node* q = mHead->mNext;
+
+		for (int j = 0; j < num -1 - i; j++)
+		{
+			if (p->mVal < q->mVal)
+			{
+				int temp = p->mVal;
+				p->mVal = q->mVal;
+				q->mVal = temp;
+			}
+
+			p = p->mNext;
+			q = q->mNext;
+		}
+	}
+}
+
+void MergeSortedLinkList(LinkList l1, LinkList l2)
+{
+	Node* p1 = l1.mHead->mNext;
+	Node* p2 = l2.mHead->mNext;
+
+	if (p1 == nullptr)
+	{
+		l1.mHead = l2.mHead;
+		return;
+	}
+
+	if (p2 == nullptr)
+	{
+		return;
+	}
+
+	Node* q2 = l2.mHead->mNext;
+	while (p1 != nullptr)
+	{
+		
+	}
 }
