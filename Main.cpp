@@ -71,8 +71,12 @@ int main()
 	{
 		linkList2.InsertTail(rand() % 100);
 	}
+	linkList2.SortedLinkList(10);
 
-	MergeSortedLinkList(linkList, linkList2);
+	/*MergeSortedLinkList(linkList, linkList2);
+	linkList.PrintLinkList();*/
+
+	MergeTwoLinkList(linkList, linkList2);
 	linkList.PrintLinkList();
 
 	return 0;

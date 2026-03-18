@@ -134,6 +134,37 @@ void MergeSortedLinkList(LinkList& l1, LinkList& l2)
 	}
 
 	l1.SortedLinkList(21);
+}
 
-	return;
+void MergeTwoLinkList(LinkList& l1, LinkList& l2)
+{
+	Node* last = l1.mHead;
+	Node* p = l1.mHead->mNext;
+	Node* q = l2.mHead->mNext;
+
+	while (p != nullptr && q != nullptr)
+	{
+		if (p->mVal >= q->mVal)
+		{
+			last->mNext = q;
+			last = last->mNext;
+			q = q->mNext;
+			last->mNext = p;
+		}
+		else
+		{
+			p = p->mNext;
+			last = last->mNext;
+		}
+	}
+
+	if (p == nullptr)
+	{
+		while (q != nullptr)
+		{
+			last->mNext = q;
+			last = last->mNext;
+			q = q->mNext;
+		}
+	}
 }
