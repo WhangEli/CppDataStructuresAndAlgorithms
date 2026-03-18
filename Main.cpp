@@ -65,5 +65,15 @@ int main()
 	linkList.SortedLinkList(11);
 	linkList.PrintLinkList();
 
+	LinkList linkList2;
+	srand(time(0));
+	for (int i = 0; i < 10; i++)
+	{
+		linkList2.InsertTail(rand() % 100);
+	}
+
+	MergeSortedLinkList(linkList, linkList2);
+	linkList.PrintLinkList();
+
 	return 0;
 }

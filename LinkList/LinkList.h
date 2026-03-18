@@ -25,5 +25,7 @@ private:
 	Node* mHead;
 
 public:
-	friend void MergeSortedLinkList(LinkList l1, LinkList l2);
+	friend void MergeSortedLinkList(LinkList& l1, LinkList& l2);
 };
+
+void MergeSortedLinkList(LinkList& l1, LinkList& l2);

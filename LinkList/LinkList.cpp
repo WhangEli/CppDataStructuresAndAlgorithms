@@ -15,8 +15,7 @@ LinkList::~LinkList()
 
 void LinkList::PrintLinkList()
 {
-	Node* p = nullptr;
-	p = mHead->mNext;
+	Node* p = mHead->mNext;
 
 	while (p != nullptr)
 	{
@@ -92,10 +91,7 @@ void LinkList::UpdateVal(int val, int newVal)
 
 void LinkList::SortedLinkList(int num)
 {
-	Node* p = mHead->mNext->mNext;
-	Node* q = mHead->mNext;
-
-	for (int i = 0; i < num - 2; i++)
+	for (int i = 0; i < num - 1; i++)
 	{
 		Node* p = mHead->mNext->mNext;
 		Node* q = mHead->mNext;
@@ -115,7 +111,7 @@ void LinkList::SortedLinkList(int num)
 	}
 }
 
-void MergeSortedLinkList(LinkList l1, LinkList l2)
+void MergeSortedLinkList(LinkList& l1, LinkList& l2)
 {
 	Node* p1 = l1.mHead->mNext;
 	Node* p2 = l2.mHead->mNext;
@@ -131,9 +127,13 @@ void MergeSortedLinkList(LinkList l1, LinkList l2)
 		return;
 	}
 
-	Node* q2 = l2.mHead->mNext;
-	while (p1 != nullptr)
+	while (p2 != nullptr)
 	{
-		
+		l1.InsertHead(p2->mVal);
+		p2 = p2->mNext;
 	}
+
+	l1.SortedLinkList(21);
+
+	return;
 }
