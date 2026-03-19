@@ -21,6 +21,7 @@ public:
 	void UpdateVal(int val, int newVal);
 	void SortedLinkList(int num);
 	Node* IsItCircle();
+	void MoveKPos(int num);
 
 public:
 	Node* mHead;

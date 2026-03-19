@@ -111,33 +111,8 @@ void LinkList::SortedLinkList(int num)
 	}
 }
 
-void MergeSortedLinkList(LinkList& l1, LinkList& l2)
-{
-	Node* p1 = l1.mHead->mNext;
-	Node* p2 = l2.mHead->mNext;
-
-	if (p1 == nullptr)
-	{
-		l1.mHead = l2.mHead;
-		return;
-	}
-
-	if (p2 == nullptr)
-	{
-		return;
-	}
-
-	while (p2 != nullptr)
-	{
-		l1.InsertHead(p2->mVal);
-		p2 = p2->mNext;
-	}
-
-	l1.SortedLinkList(21);
-}
-
 Node* LinkList::IsItCircle()
-{ 
+{
 	Node* slow = mHead->mNext;
 	Node* fast = mHead->mNext;
 
@@ -168,6 +143,55 @@ Node* LinkList::IsItCircle()
 	}
 
 	return nullptr;
+}
+
+void LinkList::MoveKPos(int num)
+{
+	for (int i = 0; i < num; i++)
+	{
+		Node* p = mHead->mNext;
+		Node* q = mHead;
+
+		if (p == nullptr)
+		{
+			return;
+		}
+
+		while (p->mNext != nullptr)
+		{
+			p = p->mNext;
+			q = q->mNext;
+		}
+
+		p->mNext = mHead->mNext;
+		q->mNext = nullptr;
+		mHead->mNext = p;
+	}
+}
+
+void MergeSortedLinkList(LinkList& l1, LinkList& l2)
+{
+	Node* p1 = l1.mHead->mNext;
+	Node* p2 = l2.mHead->mNext;
+
+	if (p1 == nullptr)
+	{
+		l1.mHead = l2.mHead;
+		return;
+	}
+
+	if (p2 == nullptr)
+	{
+		return;
+	}
+
+	while (p2 != nullptr)
+	{
+		l1.InsertHead(p2->mVal);
+		p2 = p2->mNext;
+	}
+
+	l1.SortedLinkList(21);
 }
 
 void MergeTwoLinkList(LinkList& l1, LinkList& l2)
