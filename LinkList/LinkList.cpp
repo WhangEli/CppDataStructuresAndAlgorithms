@@ -156,6 +156,13 @@ Node* LinkList::IsItCircle()
 
 		if (p == q)
 		{
+			q = mHead->mNext;
+			while (p != q)
+			{
+				p = p->mNext;
+				q = q->mNext;
+			}
+
 			return p;
 		}
 	}
