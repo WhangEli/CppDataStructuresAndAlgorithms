@@ -138,34 +138,36 @@ void MergeSortedLinkList(LinkList& l1, LinkList& l2)
 
 Node* LinkList::IsItCircle()
 {
-	Node* q = mHead->mNext;
-	Node* p = mHead->mNext;
+	Node* slow = mHead->mNext;
+	Node* fast = mHead->mNext;
 
-	while (p != nullptr)
+	while (fast != nullptr)
 	{
-		p = p->mNext;
-		q = q->mNext;
-		if (p == nullptr)
+		slow = slow->mNext;
+		fast = fast->mNext;
+		if (fast == nullptr)
 		{
 			return nullptr;
 		}
 		else
 		{
-			p = p->mNext;
+			fast = fast->mNext;
 		}
 
-		if (p == q)
+		if (fast == slow)
 		{
-			q = mHead->mNext;
-			while (p != q)
+			fast = mHead->mNext;
+			while (fast != slow)
 			{
-				p = p->mNext;
-				q = q->mNext;
+				fast = fast->mNext;
+				slow = slow->mNext;
 			}
 
-			return p;
+			return slow;
 		}
 	}
+
+	return nullptr;
 }
 
 void MergeTwoLinkList(LinkList& l1, LinkList& l2)
