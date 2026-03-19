@@ -28,8 +28,11 @@ public:
 public:
 	friend void MergeSortedLinkList(LinkList& l1, LinkList& l2);
 	friend void MergeTwoLinkList(LinkList& l1, LinkList& l2);
+	friend void IsItIntersect(LinkList& l1, LinkList& l2);
 };
 
 void MergeSortedLinkList(LinkList& l1, LinkList& l2);
 
 void MergeTwoLinkList(LinkList& l1, LinkList& l2);
+
+void IsItIntersect(LinkList& l1, LinkList& l2);

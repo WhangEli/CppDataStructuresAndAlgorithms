@@ -137,7 +137,7 @@ void MergeSortedLinkList(LinkList& l1, LinkList& l2)
 }
 
 Node* LinkList::IsItCircle()
-{
+{ 
 	Node* slow = mHead->mNext;
 	Node* fast = mHead->mNext;
 
@@ -201,4 +201,58 @@ void MergeTwoLinkList(LinkList& l1, LinkList& l2)
 			q = q->mNext;
 		}
 	}
+}
+
+void IsItIntersect(LinkList& l1, LinkList& l2)
+{
+	Node* temp1 = l1.mHead;
+	Node* temp2 = l2.mHead;
+	int num1 = 0;
+	int num2 = 0;
+
+	while (temp1 != nullptr)
+	{
+		temp1 = temp1->mNext;
+		num1++;
+	}
+
+	while (temp2 != nullptr)
+	{
+		temp2 = temp2->mNext;
+		num2++;
+	}
+
+	Node* p = l1.mHead;
+	Node* q = l2.mHead;
+
+	if (num1 >= num2)
+	{
+		while (num1 - num2 > 0)
+		{
+			num1--;
+			p = p->mNext;
+		}
+	}
+	else
+	{
+		while (num2 - num1 > 0)
+		{
+			num2--;
+			q = q->mNext;
+		}
+	}
+
+	while (p != nullptr)
+	{
+		if (p == q)
+		{
+			std::cout << "two linklists intersect , the pos is " << p << std::endl;
+			return;
+		}
+
+		p = p->mNext;
+		q = q->mNext;
+	}
+
+	std::cout << "the two linklists do not intersect" << std::endl;
 }
