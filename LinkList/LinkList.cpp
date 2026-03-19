@@ -136,6 +136,31 @@ void MergeSortedLinkList(LinkList& l1, LinkList& l2)
 	l1.SortedLinkList(21);
 }
 
+Node* LinkList::IsItCircle()
+{
+	Node* q = mHead->mNext;
+	Node* p = mHead->mNext;
+
+	while (p != nullptr)
+	{
+		p = p->mNext;
+		q = q->mNext;
+		if (p == nullptr)
+		{
+			return nullptr;
+		}
+		else
+		{
+			p = p->mNext;
+		}
+
+		if (p == q)
+		{
+			return p;
+		}
+	}
+}
+
 void MergeTwoLinkList(LinkList& l1, LinkList& l2)
 {
 	Node* last = l1.mHead;

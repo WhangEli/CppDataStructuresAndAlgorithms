@@ -20,8 +20,9 @@ public:
 	void RemoveNode(int val);
 	void UpdateVal(int val, int newVal);
 	void SortedLinkList(int num);
+	Node* IsItCircle();
 
-private:
+public:
 	Node* mHead;
 
 public:
