@@ -280,3 +280,25 @@ void IsItIntersect(LinkList& l1, LinkList& l2)
 
 	std::cout << "the two linklists do not intersect" << std::endl;
 }
+
+void Joseph(LinkList& l, int num, int index)
+{
+	Node* fast = l.mHead->mNext;
+	Node* slow = l.mHead;
+
+	for (int i = 0; i < num; i++)
+	{
+		for (int j = 0; j < index - 1; j++)
+		{
+			fast = fast->mNext;
+			slow = slow->mNext;
+		}
+
+		std::cout << fast->mVal << " ";
+		slow->mNext = fast->mNext;
+		delete fast;
+		fast = slow->mNext;
+	}
+
+	std::cout << std::endl;
+}
