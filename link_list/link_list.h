@@ -3,8 +3,8 @@
 
 struct Node
 {
-	int mVal;
-	Node* mNext;
+	int val;
+	Node* next;
 };
 
 class LinkList
@@ -24,7 +24,7 @@ public:
 	void MoveKPos(int num);
 
 public:
-	Node* mHead;
+	Node* head_;
 };
 
 void MergeSortedLinkList(LinkList& l1, LinkList& l2);

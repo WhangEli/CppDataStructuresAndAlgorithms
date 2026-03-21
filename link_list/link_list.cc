@@ -1,26 +1,26 @@
-﻿#include "LinkList.h"
+﻿#include "link_list.h"
 
 LinkList::LinkList()
 {
-	mHead = new Node();
-	mHead->mVal = 0;
-	mHead->mNext = nullptr;
+	head_ = new Node();
+	head_->val = 0;
+	head_->next = nullptr;
 }
 
 LinkList::~LinkList()
 {
-	delete mHead;
-	mHead = nullptr;
+	delete head_;
+	head_ = nullptr;
 }
 
 void LinkList::PrintLinkList()
 {
-	Node* p = mHead->mNext;
+	Node* p = head_->next;
 
 	while (p != nullptr)
 	{
-		std::cout << p->mVal << " ";
-		p = p->mNext;
+		std::cout << p->val << " ";
+		p = p->next;
 	}
 
 	std::cout << std::endl;
@@ -28,44 +28,44 @@ void LinkList::PrintLinkList()
 
 void LinkList::InsertTail(int val)
 {
-	Node* p = mHead;
+	Node* p = head_;
 
-	while (p->mNext != nullptr)
+	while (p->next != nullptr)
 	{
-		p = p->mNext;
+		p = p->next;
 	}
 
-	p->mNext = new Node;
-	p = p->mNext;
-	p->mVal = val;
-	p->mNext = nullptr;
+	p->next = new Node;
+	p = p->next;
+	p->val = val;
+	p->next = nullptr;
 }
 
 void LinkList::InsertHead(int val)
 {
 	Node* node = new Node;
-	Node* p = mHead->mNext;
+	Node* p = head_->next;
 
-	node->mVal = val;
-	node->mNext = p;
-	mHead->mNext = node;
+	node->val = val;
+	node->next = p;
+	head_->next = node;
 }
 
 void LinkList::RemoveNode(int val)
 {
-	Node* p = mHead->mNext;
-	Node* q = mHead;
+	Node* p = head_->next;
+	Node* q = head_;
 
 	while (p != nullptr)
 	{
-		if (p->mVal == val)
+		if (p->val == val)
 		{
-			q->mNext = p->mNext;
+			q->next = p->next;
 			return;
 		}
 
-		p = p->mNext;
-		q = q->mNext;
+		p = p->next;
+		q = q->next;
 	}
 
 	std::cout << "no such val in the LinkList" << std::endl;
@@ -73,17 +73,17 @@ void LinkList::RemoveNode(int val)
 
 void LinkList::UpdateVal(int val, int newVal)
 {
-	Node* p = mHead->mNext;
+	Node* p = head_->next;
 
 	while (p != nullptr)
 	{
-		if (p->mVal == val)
+		if (p->val == val)
 		{
-			p->mVal = newVal;
+			p->val = newVal;
 			return;
 		}
 
-		p = p->mNext;
+		p = p->next;
 	}
 
 	std::cout << "no such val in the LinkList" << std::endl;
@@ -93,49 +93,49 @@ void LinkList::SortedLinkList(int num)
 {
 	for (int i = 0; i < num - 1; i++)
 	{
-		Node* p = mHead->mNext->mNext;
-		Node* q = mHead->mNext;
+		Node* p = head_->next->next;
+		Node* q = head_->next;
 
 		for (int j = 0; j < num -1 - i; j++)
 		{
-			if (p->mVal < q->mVal)
+			if (p->val < q->val)
 			{
-				int temp = p->mVal;
-				p->mVal = q->mVal;
-				q->mVal = temp;
+				int temp = p->val;
+				p->val = q->val;
+				q->val = temp;
 			}
 
-			p = p->mNext;
-			q = q->mNext;
+			p = p->next;
+			q = q->next;
 		}
 	}
 }
 
 Node* LinkList::IsItCircle()
 {
-	Node* slow = mHead->mNext;
-	Node* fast = mHead->mNext;
+	Node* slow = head_->next;
+	Node* fast = head_->next;
 
 	while (fast != nullptr)
 	{
-		slow = slow->mNext;
-		fast = fast->mNext;
+		slow = slow->next;
+		fast = fast->next;
 		if (fast == nullptr)
 		{
 			return nullptr;
 		}
 		else
 		{
-			fast = fast->mNext;
+			fast = fast->next;
 		}
 
 		if (fast == slow)
 		{
-			fast = mHead->mNext;
+			fast = head_->next;
 			while (fast != slow)
 			{
-				fast = fast->mNext;
-				slow = slow->mNext;
+				fast = fast->next;
+				slow = slow->next;
 			}
 
 			return slow;
@@ -149,34 +149,34 @@ void LinkList::MoveKPos(int num)
 {
 	for (int i = 0; i < num; i++)
 	{
-		Node* p = mHead->mNext;
-		Node* q = mHead;
+		Node* p = head_->next;
+		Node* q = head_;
 
 		if (p == nullptr)
 		{
 			return;
 		}
 
-		while (p->mNext != nullptr)
+		while (p->next != nullptr)
 		{
-			p = p->mNext;
-			q = q->mNext;
+			p = p->next;
+			q = q->next;
 		}
 
-		p->mNext = mHead->mNext;
-		q->mNext = nullptr;
-		mHead->mNext = p;
+		p->next = head_->next;
+		q->next = nullptr;
+		head_->next = p;
 	}
 }
 
 void MergeSortedLinkList(LinkList& l1, LinkList& l2)
 {
-	Node* p1 = l1.mHead->mNext;
-	Node* p2 = l2.mHead->mNext;
+	Node* p1 = l1.head_->next;
+	Node* p2 = l2.head_->next;
 
 	if (p1 == nullptr)
 	{
-		l1.mHead = l2.mHead;
+		l1.head_ = l2.head_;
 		return;
 	}
 
@@ -187,8 +187,8 @@ void MergeSortedLinkList(LinkList& l1, LinkList& l2)
 
 	while (p2 != nullptr)
 	{
-		l1.InsertHead(p2->mVal);
-		p2 = p2->mNext;
+		l1.InsertHead(p2->val);
+		p2 = p2->next;
 	}
 
 	l1.SortedLinkList(21);
@@ -196,23 +196,23 @@ void MergeSortedLinkList(LinkList& l1, LinkList& l2)
 
 void MergeTwoLinkList(LinkList& l1, LinkList& l2)
 {
-	Node* last = l1.mHead;
-	Node* p = l1.mHead->mNext;
-	Node* q = l2.mHead->mNext;
+	Node* last = l1.head_;
+	Node* p = l1.head_->next;
+	Node* q = l2.head_->next;
 
 	while (p != nullptr && q != nullptr)
 	{
-		if (p->mVal >= q->mVal)
+		if (p->val >= q->val)
 		{
-			last->mNext = q;
-			last = last->mNext;
-			q = q->mNext;
-			last->mNext = p;
+			last->next = q;
+			last = last->next;
+			q = q->next;
+			last->next = p;
 		}
 		else
 		{
-			p = p->mNext;
-			last = last->mNext;
+			p = p->next;
+			last = last->next;
 		}
 	}
 
@@ -220,41 +220,41 @@ void MergeTwoLinkList(LinkList& l1, LinkList& l2)
 	{
 		while (q != nullptr)
 		{
-			last->mNext = q;
-			last = last->mNext;
-			q = q->mNext;
+			last->next = q;
+			last = last->next;
+			q = q->next;
 		}
 	}
 }
 
 void IsItIntersect(LinkList& l1, LinkList& l2)
 {
-	Node* temp1 = l1.mHead;
-	Node* temp2 = l2.mHead;
+	Node* temp1 = l1.head_;
+	Node* temp2 = l2.head_;
 	int num1 = 0;
 	int num2 = 0;
 
 	while (temp1 != nullptr)
 	{
-		temp1 = temp1->mNext;
+		temp1 = temp1->next;
 		num1++;
 	}
 
 	while (temp2 != nullptr)
 	{
-		temp2 = temp2->mNext;
+		temp2 = temp2->next;
 		num2++;
 	}
 
-	Node* p = l1.mHead;
-	Node* q = l2.mHead;
+	Node* p = l1.head_;
+	Node* q = l2.head_;
 
 	if (num1 >= num2)
 	{
 		while (num1 - num2 > 0)
 		{
 			num1--;
-			p = p->mNext;
+			p = p->next;
 		}
 	}
 	else
@@ -262,7 +262,7 @@ void IsItIntersect(LinkList& l1, LinkList& l2)
 		while (num2 - num1 > 0)
 		{
 			num2--;
-			q = q->mNext;
+			q = q->next;
 		}
 	}
 
@@ -274,8 +274,8 @@ void IsItIntersect(LinkList& l1, LinkList& l2)
 			return;
 		}
 
-		p = p->mNext;
-		q = q->mNext;
+		p = p->next;
+		q = q->next;
 	}
 
 	std::cout << "the two linklists do not intersect" << std::endl;
@@ -283,21 +283,21 @@ void IsItIntersect(LinkList& l1, LinkList& l2)
 
 void Joseph(LinkList& l, int num, int index)
 {
-	Node* fast = l.mHead->mNext;
-	Node* slow = l.mHead;
+	Node* fast = l.head_->next;
+	Node* slow = l.head_;
 
 	for (int i = 0; i < num; i++)
 	{
 		for (int j = 0; j < index - 1; j++)
 		{
-			fast = fast->mNext;
-			slow = slow->mNext;
+			fast = fast->next;
+			slow = slow->next;
 		}
 
-		std::cout << fast->mVal << " ";
-		slow->mNext = fast->mNext;
+		std::cout << fast->val << " ";
+		slow->next = fast->next;
 		delete fast;
-		fast = slow->mNext;
+		fast = slow->next;
 	}
 
 	std::cout << std::endl;
