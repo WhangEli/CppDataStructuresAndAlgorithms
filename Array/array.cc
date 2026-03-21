@@ -1,6 +1,9 @@
 ﻿#include "array.h"
 
-Array::Array(int capacity) :p_(nullptr), capacity_(capacity), size_(0)
+Array::Array(int capacity)
+	: p_(nullptr)
+	, capacity_(capacity)
+	, size_(0)
 {
 	p_ = new int[capacity];
 }

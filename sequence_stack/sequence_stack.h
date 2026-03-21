@@ -1,17 +1,22 @@
 ﻿#pragma once
-#include "sequence_stack.h"
+#include <iostream>
 
-class SeqStack
+class SequenceStack
 {
 public:
-	SeqStack();
-	~SeqStack();
+	SequenceStack(int capacity);
+	~SequenceStack();
 
 public:
-	void PushBack();
+	void PushBack(int val);
 	void PopBack();
 
 private:
-	int top_;
+	void Expend(int capacity);
+
+private:
+	int* top_;
+	int capacity_;
+	int size_;
 };
 
