@@ -10,7 +10,12 @@ struct Node
 class LinkStack
 {
 public:
+	LinkStack();
+	~LinkStack();
 
+public:
+	void PushBack(int val);
+	void PopBack();
 
 private:
 	Node* head_;
