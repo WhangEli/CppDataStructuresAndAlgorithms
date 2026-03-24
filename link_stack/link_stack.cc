@@ -37,4 +37,6 @@ void LinkStack::PopBack()
 	{
 		head_->next = p->next;
 		delete p;
+		p = nullptr;
+	}
 }
