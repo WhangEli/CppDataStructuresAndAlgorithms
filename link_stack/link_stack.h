@@ -16,6 +16,7 @@ public:
 public:
 	void PushBack(int val);
 	void PopBack();
+	int GetTop();
 
 private:
 	Node* head_;

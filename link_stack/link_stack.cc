@@ -40,3 +40,17 @@ void LinkStack::PopBack()
 		p = nullptr;
 	}
 }
+
+int LinkStack::GetTop()
+{
+	Node* p = head_->next;
+
+	if (p == nullptr)
+	{
+		throw "link stack is empty!";
+	}
+	else
+	{
+		return p->val;
+	}
+}
