@@ -5,26 +5,26 @@ CircleQueue::CircleQueue(int capacity = 10)
 	, front_(0)
 	, rear_(0)
 {
-	arr_ = new int[capacity];
+	p_ = new int[capacity];
 }
 
 CircleQueue::~CircleQueue()
 {
-	delete[]arr_;
-	arr_ = nullptr;
+	delete[]p_;
+	p_ = nullptr;
 }
 
 void CircleQueue::Expand(int capacity)
 {
 	int* p = new int[capacity];
-	memcpy(p, arr_, sizeof(int) * capacity_);
-	delete[]arr_;
-	arr_ = p;
+	memcpy(p, p_, sizeof(int) * capacity_);
+	delete[]p_;
+	p_ = p;
 }
 
 void CircleQueue::Enqueue(int val)
 {
-	arr_[rear_] = val;
+	p_[rear_] = val;
 	rear_ = ++rear_ % capacity_;
 
 	if (rear_ == front_)

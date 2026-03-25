@@ -15,7 +15,7 @@ private:
 	void Expand(int capacity);
 
 private:
-	int* arr_;
+	int* p_;
 	int front_;
 	int rear_;
 	int capacity_;

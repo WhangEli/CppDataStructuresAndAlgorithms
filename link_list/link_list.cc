@@ -9,8 +9,14 @@ LinkList::LinkList()
 
 LinkList::~LinkList()
 {
-	delete head_;
-	head_ = nullptr;
+	Node* p = head_->next;
+
+	while (p != nullptr)
+	{
+		head_->next = p->next;
+		delete p;
+		p = head_->next;
+	}
 }
 
 void LinkList::PrintLinkList()

@@ -10,6 +10,7 @@ LinkStack::LinkStack()
 LinkStack::~LinkStack()
 {
 	Node* p = head_->next;
+
 	while (p != nullptr)
 	{
 		head_->next = p->next;
