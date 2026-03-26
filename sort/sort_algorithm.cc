@@ -1,6 +1,6 @@
 ﻿#include "sort_algorithm.h"
 
-void BubbleSort(int arr[], int capacity)
+void BubbleSort(int arr[], int size)
 {
 	for (int i = 0; i < capacity - 1; i++)
 	{
@@ -16,19 +16,19 @@ void BubbleSort(int arr[], int capacity)
 			}
 		}
 
-		if (flag)
+		if (!flag)
 		{
 			return;
 		}
 	}
 }
 
-void SelectionSort(int arr[], int capacity)
+void SelectionSort(int arr[], int size)
 {
-	for (int i = 0; i < capacity; i++)
+	for (int i = 0; i < size; i++)
 	{
 		int min = i;
-		for (int j = i; j < capacity; j++)
+		for (int j = i; j < size; j++)
 		{
 			if (arr[min] >= arr[j])
 			{
@@ -41,22 +41,22 @@ void SelectionSort(int arr[], int capacity)
 	}
 }
 
-void InsertionSort(int arr[], int capacity)
+void InsertionSort(int arr[], int size)
 {
 
 }
 
-void ShellSort(int arr[], int capacity)
+void ShellSort(int arr[], int size)
 {
 
 }
 
-void QuickSort(int arr[], int capacity)
+void QuickSort(int arr[], int size)
 {
 
 }
 
-void MergeSort(int arr[], int capacity)
+void MergeSort(int arr[], int size)
 {
 
 }
