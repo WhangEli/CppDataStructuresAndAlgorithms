@@ -97,9 +97,48 @@ void ShellSort(int arr[], int size)
 	}
 }
 
-void QuickSort(int arr[], int size)
+void QuickSort(int arr[], int left, int right)
 {
+	if (left >= right)
+	{
+		return;
+	}
 
+	int temp = arr[left];
+	int l = left;
+	int r = right;
+	while (l < r)
+	{
+		while (l < r && arr[r] > temp)
+		{
+			r--;
+		}
+
+		if (l < r)
+		{
+			arr[l] = arr[r];
+			l++;
+		}
+
+		while (l < r && arr[l] < temp)
+		{
+			l++;
+		}
+
+		if (l < r)
+		{
+			arr[r] = arr[l];
+			r--;
+		}
+	}
+
+	if (l == r)
+	{
+		arr[l] = temp;
+	}
+
+	QuickSort(arr, left, l - 1);
+	QuickSort(arr, l + 1, right);
 }
 
 void MergeSort(int arr[], int size)

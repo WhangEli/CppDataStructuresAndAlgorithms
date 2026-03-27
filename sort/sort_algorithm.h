@@ -9,6 +9,6 @@ void InsertionSort(int arr[], int size);
 
 void ShellSort(int arr[], int size);
 
-void QuickSort(int arr[], int size);
+void QuickSort(int arr[], int left, int right);
 
 void MergeSort(int arr[], int size);
