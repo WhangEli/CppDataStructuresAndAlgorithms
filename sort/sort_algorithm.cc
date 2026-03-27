@@ -69,8 +69,32 @@ void InsertionSort(int arr[], int size)
 void ShellSort(int arr[], int size)
 {
 	int gap = size / 2;
-	
+	while (gap >= 1)
+	{
+		for (int v = 0; v < gap; v++)
+		{
+			for (int i = v + gap; i < size; i = i + gap)
+			{
+				int temp = arr[i];
+				int j = i - gap;
+				for (j; j >= 0;  j = j - gap)
+				{
+					if (arr[j] > temp)
+					{
+						arr[j + gap] = arr[j];
+					}
+					else
+					{
+						break;
+					}
+				}
 
+				arr[j + gap] = temp;
+			}
+		}
+
+		gap = gap / 2;
+	}
 }
 
 void QuickSort(int arr[], int size)
