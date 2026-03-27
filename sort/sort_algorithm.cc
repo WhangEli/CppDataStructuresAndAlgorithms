@@ -48,39 +48,28 @@ void InsertionSort(int arr[], int size)
 {
 	for (int i = 1; i < size; i++)
 	{
+		int temp = arr[i];
 		int j = i - 1;
-		while (j>=0)
+		for (j; j >= 0; j--)
 		{
-			if (arr[i] >= arr[j])
+			if (arr[j] > temp)
 			{
-				int temp = arr[i];
-				for (int v = i; v >= j + 1; v--)
-				{
-					arr[v] = arr[v - 1];
-				}
-				arr[j + 1] = temp;
-				break;
+				arr[j + 1] = arr[j];
 			}
 			else
 			{
-				j--;
+				break;
 			}
 		}
 
-		if (j == -1)
-		{
-			int temp = arr[i];
-			for (int v = i; v > 0; v--)
-			{
-				arr[v] = arr[v - 1];
-			}
-			arr[0] = temp;
-		}
+		arr[j + 1] = temp;
 	}
 }
 
 void ShellSort(int arr[], int size)
 {
+	int gap = size / 2;
+	
 
 }
 
